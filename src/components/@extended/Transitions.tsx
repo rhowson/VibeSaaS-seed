@@ -75,7 +75,7 @@ export default function Transitions({ children, position = 'top-left', type = 'g
 
       {type === 'collapse' && (
         <Collapse {...others} sx={positionSX}>
-          {children}
+          {children as any}
         </Collapse>
       )}
 

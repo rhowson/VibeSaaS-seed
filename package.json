@@ -14,7 +14,8 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "prettier": "prettier --write \"src/**/*.{js,jsx,ts,tsx}\"",
-    "knip": "knip"
+    "knip": "knip",
+    "type-check": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
     "@emotion/cache": "11.14.0",
