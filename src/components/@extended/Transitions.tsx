@@ -69,7 +69,7 @@ export default function Transitions({ children, position = 'top-left', type = 'g
             exit: 150
           }}
         >
-          <Box sx={positionSX}>{children}</Box>
+          <Box sx={positionSX}>{children as any}</Box>
         </Grow>
       )}
 
