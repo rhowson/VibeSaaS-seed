@@ -1,7 +1,5 @@
 'use client';
 
-import { ReactNode, ReactPortal } from 'react';
-
 // material-ui
 import { alpha, styled } from '@mui/material/styles';
 import MuiIconButton, { IconButtonProps } from '@mui/material/IconButton';
@@ -154,11 +152,10 @@ const IconButtonStyle = styled(MuiIconButton, { shouldForwardProp: (prop) => pro
   })
 );
 
-interface Props extends IconButtonProps {
+interface Props extends Omit<IconButtonProps, 'children'> {
   shape?: IconButtonShapeProps;
   variant?: ButtonVariantProps;
-  children: ReactNode;
-  tooltip?: boolean | ReactNode | ReactPortal;
+  children: React.ReactNode;
 }
 
 // ==============================|| ICON BUTTON - EXTENDED ||============================== //
@@ -166,7 +163,7 @@ interface Props extends IconButtonProps {
 function IconButton({ variant = 'text', shape = 'square', children, color = 'primary', ref, ...others }: Props) {
   return (
     <IconButtonStyle ref={ref} variant={variant} shape={shape} color={color} {...others}>
-      {children}
+      {children as any}
     </IconButtonStyle>
   );
 }

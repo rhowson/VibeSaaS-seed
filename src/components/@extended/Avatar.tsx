@@ -1,6 +1,6 @@
 'use client';
 
-import { ReactNode } from 'react';
+import React from 'react';
 
 // material-ui
 import { alpha, styled } from '@mui/material/styles';
@@ -142,9 +142,9 @@ const AvatarStyle = styled(MuiAvatar, { shouldForwardProp: (prop) => prop !== 'c
 
 // ==============================|| AVATAR - EXTENDED ||============================== //
 
-interface Props extends AvatarProps {
+interface Props extends Omit<AvatarProps, 'children'> {
   color?: ColorProps;
-  children?: ReactNode | string;
+  children?: React.ReactNode;
   type?: AvatarTypeProps;
   size?: SizeProps;
 }
@@ -152,7 +152,7 @@ interface Props extends AvatarProps {
 export default function Avatar({ children, color = 'primary', type, size = 'md', ...others }: Props) {
   return (
     <AvatarStyle color={color} type={type} size={size} {...others}>
-      {children}
+      {children as any}
     </AvatarStyle>
   );
 }

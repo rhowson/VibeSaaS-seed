@@ -3,7 +3,7 @@
 import { CSSProperties, ReactElement, useEffect, useState } from 'react';
 
 // next
-import NextLink from 'next/link';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
 // material-ui
@@ -143,17 +143,16 @@ export default function Breadcrumbs({
   if (!custom && main && main.type === 'collapse' && main.breadcrumbs === true) {
     CollapseIcon = main.icon ? main.icon : Buildings2;
     mainContent = (
-      <Typography
-        component={NextLink}
-        href={(main.url as string) || '/'}
-        passHref
-        variant="body1"
-        color={window.location.pathname === main.url ? 'text.secondary' : 'text.primary'}
-        sx={{ textDecoration: 'none' }}
-      >
-        {icons && <CollapseIcon style={iconSX} />}
-        <FormattedMessage id={main.title} />
-      </Typography>
+      <Link href={(main.url as string) || '/'} style={{ textDecoration: 'none' }}>
+        <Typography
+          variant="body1"
+          color={window.location.pathname === main.url ? 'text.secondary' : 'text.primary'}
+          sx={{ textDecoration: 'none' }}
+        >
+          {icons && <CollapseIcon style={iconSX} />}
+          <FormattedMessage id={main.title} />
+        </Typography>
+      </Link>
     );
     breadcrumbContent = (
       <MainCard
@@ -172,11 +171,13 @@ export default function Breadcrumbs({
         >
           <Grid>
             <MuiBreadcrumbs aria-label="breadcrumb" maxItems={maxItems || 8} separator={separatorIcon}>
-              <Typography component={NextLink} href="/" passHref variant="body1" color="text.primary" sx={{ textDecoration: 'none' }}>
-                {icons && <Home3 style={iconSX} />}
-                {icon && !icons && <Home3 variant="Bold" style={{ ...iconSX, marginRight: 0 }} />}
-                {(!icon || icons) && <FormattedMessage id="home" />}
-              </Typography>
+              <Link href="/" style={{ textDecoration: 'none' }}>
+                <Typography variant="body1" color="text.primary" sx={{ textDecoration: 'none' }}>
+                  {icons && <Home3 style={iconSX} />}
+                  {icon && !icons && <Home3 variant="Bold" style={{ ...iconSX, marginRight: 0 }} />}
+                  {(!icon || icons) && <FormattedMessage id="home" />}
+                </Typography>
+              </Link>
               {mainContent}
             </MuiBreadcrumbs>
           </Grid>
@@ -207,18 +208,17 @@ export default function Breadcrumbs({
 
     let tempContent = (
       <MuiBreadcrumbs aria-label="breadcrumb" maxItems={maxItems || 8} separator={separatorIcon}>
-        <Typography
-          component={NextLink}
-          href="/"
-          passHref
-          color="text.secondary"
-          variant="h6"
-          sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}
-        >
-          {icons && <Home3 style={iconSX} />}
-          {icon && !icons && <Home3 variant="Bold" style={{ ...iconSX, marginRight: 0 }} />}
-          {(!icon || icons) && <FormattedMessage id="home" />}
-        </Typography>
+        <Link href="/" style={{ textDecoration: 'none' }}>
+          <Typography
+            color="text.secondary"
+            variant="h6"
+            sx={{ textDecoration: 'none', display: 'flex', alignItems: 'center' }}
+          >
+            {icons && <Home3 style={iconSX} />}
+            {icon && !icons && <Home3 variant="Bold" style={{ ...iconSX, marginRight: 0 }} />}
+            {(!icon || icons) && <FormattedMessage id="home" />}
+          </Typography>
+        </Link>
         {mainContent}
         {itemContent}
       </MuiBreadcrumbs>
@@ -243,14 +243,14 @@ export default function Breadcrumbs({
             );
             if (link.to) {
               breadcrumbLink = (
-                <NextLink
+                <Link
                   key={key}
                   href={link.to}
                   passHref
                   style={{ textDecoration: 'none', cursor: 'pointer', display: 'flex', alignItems: 'center' }}
                 >
                   {breadcrumbLink}
-                </NextLink>
+                </Link>
               );
             }
             return breadcrumbLink;

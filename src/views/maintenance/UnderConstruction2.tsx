@@ -34,12 +34,14 @@ export default function UnderConstructionPage() {
           <Typography align="center" variant="h1">
             Under Construction
           </Typography>
-          <Typography align="center" sx={{ color: 'text.secondary', width: '85%' }}>
-            Hey! Please check out this site later. We are doing some maintenance on it right now.
+          <Typography color="text.secondary" variant="body2" align="center" sx={{ width: { xs: '73%', sm: '70%' }, mt: 1 }}>
+            We are currently working on this page. Please check back later.
           </Typography>
-          <Button component={Link} href={APP_DEFAULT_PATH} variant="contained">
-            Back To Home
-          </Button>
+          <Link href={APP_DEFAULT_PATH} style={{ textDecoration: 'none' }}>
+            <Button variant="contained" sx={{ textTransform: 'none', mt: 4 }}>
+              Back To Home
+            </Button>
+          </Link>
         </Stack>
       </Grid>
     </Grid>
