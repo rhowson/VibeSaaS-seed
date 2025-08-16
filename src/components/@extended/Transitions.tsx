@@ -88,7 +88,7 @@ export default function Transitions({ children, position = 'top-left', type = 'g
             exit: 150
           }}
         >
-          <Box sx={positionSX}>{children}</Box>
+          <Box sx={positionSX}>{children as any}</Box>
         </Fade>
       )}
 
@@ -102,13 +102,13 @@ export default function Transitions({ children, position = 'top-left', type = 'g
           }}
           direction={direction}
         >
-          <Box sx={positionSX}>{children}</Box>
+          <Box sx={positionSX}>{children as any}</Box>
         </Slide>
       )}
 
       {type === 'zoom' && (
         <Zoom {...others}>
-          <Box sx={positionSX}>{children}</Box>
+          <Box sx={positionSX}>{children as any}</Box>
         </Zoom>
       )}
     </Box>
